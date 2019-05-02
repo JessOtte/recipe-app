@@ -1,2 +1,2 @@
 "use strict";
-angular.module("RecipeApp", ["ngRoute"]);
+angular.module("RecipeApp", []);
