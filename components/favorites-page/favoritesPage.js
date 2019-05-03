@@ -2,12 +2,13 @@
 
 angular
 .module("RecipeApp")
+
 .component("favoritesPage", {
     // bindings: {},
-    controller: [function () {
+    controller: [function (RecipeService) {
         const $ctrl = this;
         $ctrl.search = "";
-
+        
         $ctrl.favoritesList = [
             {
                 recipe: `Apple`,

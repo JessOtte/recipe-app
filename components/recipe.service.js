@@ -6,14 +6,20 @@ function RecipeService($http, $q) {
     service.health = null;
     service.time = null;
     service.dish= null;
-    console.log(service.input);
+    // service.dataList = [];
+    service.recipeList = [];
+    
 
 
 
-    service.fetchRecipes = (searchInput, health, time ) => {
+    service.fetchRecipes = (searchInput, time, meal, health ) => {
 
         return $q(function(resolve, reject) {
             service.input = searchInput;
+            service.health = health;
+            service.time = time;
+            service.meal = meal;
+
 
             $http({
                 url: `https://api.edamam.com/search`,
@@ -28,21 +34,39 @@ function RecipeService($http, $q) {
                 }
             })
             .then((response) => {
-                    console.log(response);
-                    return [service.input, service.health, service.time,service.dish];
+                let data = response.data.hits;
+                console.log(data);
+
+                    data.forEach(function(child, index) {
+                    let recipeObj = {
+                        label: child.recipe.label,
+                        img: child.recipe.image,
+                        calories: child.recipe.calories,
+                        ingredients: child.recipe.ingredients.length,
+                        servings: child.recipe.yield,
+                        bookmark: child.bookmarked
+                    }
+                    service.recipeList.push(recipeObj);
+                })
+                // console.log(`object: ${service.recipeList[0].label}`);
+
+
+
+                    // return [service.input, service.health, service.time,service.dish];
+                    console.log(service.recipeList);
+                    resolve(service.recipeList);
+
                     
                 })
             .catch((error) => {
-                console.log(error);
+                reject(error);
             })
-
 
 
         })
 
 
     }
-
 
 }
 
