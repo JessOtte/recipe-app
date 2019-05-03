@@ -5,28 +5,34 @@ angular
 
 .component("favoritesPage", {
     // bindings: {},
-    controller: [function (RecipeService) {
+    controller: [function () {
+        // console.log(`Is it working: ${RecipeService.fetchRecipes}`);
         const $ctrl = this;
         $ctrl.search = "";
         
         $ctrl.favoritesList = [
             {
-                recipe: `Apple`,
-                deleted: false,
-                favorited: true
-        
+                label: 'Apple',
+                img: "img.jpeg",
+                calories: '10',
+                ingredients: 1,
+                servings: 1
             },
 
             {
-                recipe: `Pear`,
-                deleted: false,
-                favorited: true
+                label: 'Pear',
+                img: "img",
+                calories: '10',
+                ingredients: 1,
+                servings: 1
             },
 
             {
-                recipe: `Peach`,
-                deleted: false,
-                favorited: true
+                label: 'Peach',
+                img: "img.jpeg",
+                calories: '10',
+                ingredients: 1,
+                servings: 1
             }
         ];
 
@@ -48,7 +54,11 @@ angular
 <div class="container">
 <h1>Favorites</h1>
 <p>Your Favorites</p>
-<div ng-repeat="recipe in $ctrl.favoritesList">{{recipe.recipe}}</div>
+<div ng-repeat="recipe in $ctrl.favoritesList">
+{{recipe.label}}
+<recipe-details recipe="recipe"></recipe-details>
+<div><button>X</button><div>
+</div>
 </div>`
 
 
