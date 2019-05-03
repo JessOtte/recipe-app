@@ -1,90 +1,118 @@
-function RecipeList(RecipeService, $q) {
-    const ctrl = this;
-  // List of reddit posts to display  
-  ctrl.feed = [];
+function RecipeList(RecipeService, $q,) {
+  const ctrl = this;
+  ctrl.fetchRecipes = [];
 
-/**
- * Call https://www.reddit.com/r/aww.json
- * and set ctrl.feed to be the results
- */
-ctrl.fetchAwwSubreddit = () => {
-  return $q(function(resolve, reject) {
-    // Call service, then set our data
-    RecipeService.fetchAwwSubreddit()
-    .then ( (response) => {
-      console.log(response);
-        // do something with this data
-        // attach to template one by one
+ctrl.recipeList= [];
+RecipeService.fetchRecipes()
+  .then((response) => {
 
-        // Get children from data
-        let children = response.data.data.children;
-
-        // Same as 
-        //  <ng-repeat="child in children">
-
-        // Organize in to objects for each one
-          children.forEach( function(child, index) {
-            let childObj = {
-              title: child.data.title,
-              img: child.data.thumbnail,
-              permalink: child.data.permalink
-            }
-
-            // Add to feed array
-            ctrl.feed.push(childObj);
-
-            if ( index === (children.length -1) ){
-              // Run .then() from inside caller
-              resolve();
-            }
+    ctrl.recipeList = response;
+    console.log(response);
+  });
 
 
-          })
 
-                          // let n=0;
-                // while (n<10) {
-                //     ctrl.feed.push(`title: ${response.data.data.children[n].data.title},`)
-                //     n++
-                // }
-
-        // Resolve the promise
-
-        //   service.RecipeService()
-        //  .then( data.data.children, (i) => {
-
-        //   title =(data.data.children[i].data.title);
-        //   img =(data.data.children[i].data.thumbnail);
-        //   permalink = (data.data.children[i].data.permalink);
-        //   box = (data.data.children[i]); 
+  // ctrl.recipesList = [
+  //   {    },
+  // ] 
    
-   
-        //   let posts = $( '#post1, #post2, #post3, #post4, #post5, #post6, #post7, #post8, #post9, #post10');
-    
-   
-        //   console.log(title, img, permalink);
-        //  });   
-     });
-    });
 }
 
-  ctrl.fetchAwwSubreddit()
-  .then( () => {
-    alert('completed');
-  })
-}
+
   
   angular.module('RecipeApp').component('recipeList', {
     template: `
-    <div ng-repeat="item in $ctrl.feed">
+    <div class="card-deck" id="container">
+    <div ng-repeat="recipe in $ctrl.recipeList" class="card">
+      <img class="card-img-top" ng-img={{recipe.img}} alt="{{recipe.label}}">
+      <div class="card-body">
+        <h5 class="card-title">{{recipe.label}}</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">{{recipe.ingredients}}</small></p>
+      </div>
+    </div>
 
-      <div id="box">
-      <a href="https://www.reddit.com/{{item.permalink}}">
-      <img src="{{item.img}}"></img></a>
-
-       <h4>{{item.title}}</h4>
-       <a href="https://www.reddit.com/{{item.permalink}}">
-       <div id="link-container">Link: {{item.permalink}}</div></a></div>
-
-    </div>`, // or use templateUrl
-    controller: RedditFeed,
+    `, // or use templateUrl
+    controller: RecipeList,
 });
+
+
+
+
+
+
+// function RecipeListController(recipeService) {
+//     const ctrl = this;
+//     ctrl.recipesList = [];
+  
+//     ctrl.getList = (search) => {
+//       recipeService.getData(search)
+//         .then((recipes) => {
+//           ctrl.recipesList = []
+//           console.log("it worked!!!!!!s")
+//           console.log(recipes)
+
+//           let listFromApi = recipes;
+
+//           listFromApi.forEach(function (spot, index){
+//             let recipeObj = {
+//               label: spot.recipe.label,
+//               img: spot.recipe.image,
+//               calories: spot.recipe.calories,
+//               ingredients: spot.recipe.ingredients.length,
+//               servings: spot.recipe.yield,
+//               bookmark: spot.bookmarked
+//             }
+//             ctrl.recipesList.push(recipeObj);
+//           })
+//         })
+//         .catch((err) => {
+//           console.log("it didnt work")
+//           console.log(err);
+//         });
+//     }
+  
+    
+  
+  
+//   }
+  
+  
+//   angular
+//     .module('RecipeApp')
+//     .component('recipeList', {
+//       template: `
+//       <search-criteria get-list="$ctrl.getList(search)"></search-criteria>
+//       <div class="cardContainer">
+//           <div ng-repeat="recipe in $ctrl.recipesList" class="fullCard">
+//             <div class="imageCard">
+//               <!-- <div class="favorite">
+//                     <i class="material-icons favoriteIcon">favorite_border</i>
+//                     <i class="material-icons favoriteIcon">favorite</i>
+//                 </div> -->
+//               <img class="foodImage" src="{{recipe.img}}" alt="food">
+//             </div>
+//             <div class="informationCard">
+//               <h2 class="cardDefault cardParams cardHeader cardSpacing">{{recipe.label}}</h2>
+//               <div class="cardStats">
+//                 <p class="cardDefault rightBorder">Calories:
+//                   <span class="cardParams">{{recipe.calories}}</span>
+//                 </p>
+//                 <p class="cardDefault">Servings:
+//                   <span class="cardParams">{{recipe.servings}}</span>
+//                 </p>
+//               </div>
+//               <p class="cardDefault cardSpacing">Ingredients Needed:
+//                 <span class="cardParams">7</span>
+//               </p>
+//             </div>
+//         </div>
+//       </div>
+//     `, // or use templateUrl
+//       controller: RecipeListController,
+//       // bindings: {
+//       //   me: '<',
+//       //   onDelete: '&',
+//       //   onUpdate: '&'
+//       // }
+//     });
