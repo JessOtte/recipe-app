@@ -2,13 +2,14 @@
 
 angular
 .module("RecipeApp")
+
 .component("favoritesPage", {
     // bindings: {},
     controller: [function () {
         // console.log(`Is it working: ${RecipeService.fetchRecipes}`);
         const $ctrl = this;
         $ctrl.search = "";
-
+        
         $ctrl.favoritesList = [
             {
                 label: 'Apple',
