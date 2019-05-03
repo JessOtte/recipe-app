@@ -1,17 +1,24 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en" ng-app="RecipeApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Recipe App</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap.css">
+    <link rel="shortcut icon" href="teal-star-favicon.ico" />    
 </head>
+
 <body>
-    <!--check angular works-->
-<!-- <search-criteria></search-criteria>     -->
+    <main>
+            <search-criteria></search-criteria>
+            <recipe-list></recipe-list>
+
 <favorites-page></favorites-page>
 <search-criteria></search-criteria>
-<favorites-page></favorites-page>
+
+    </main>
+
     <script src="https://code.angularjs.org/1.7.8/angular.js"></script>
     <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
 
