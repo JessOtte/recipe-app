@@ -1,7 +1,14 @@
 function RecipeService($http, $q) {
     const service = this;
-    service.APP_KEY = "347156a4086f1d41a3e7afec3aa99d76";
-    service.APP_ID = "130a79d6";
+
+    //jessa creds
+    // service.APP_KEY = "347156a4086f1d41a3e7afec3aa99d76";
+    // service.APP_ID = "130a79d6";
+
+    //my creds
+    service.APP_KEY = "8bba960e00b73d0a7da5daaa650988e3	";
+    service.APP_ID = "c027a9cd";
+
     service.input = null;
     service.health = null;
     service.time = null;
@@ -35,26 +42,50 @@ function RecipeService($http, $q) {
             })
             .then((response) => {
                 let data = response.data.hits;
-                console.log(data);
+                // console.log(data);
 
+                async function someFunc() {
                     data.forEach(function(child, index) {
-                    let recipeObj = {
-                        label: child.recipe.label,
-                        img: child.recipe.image,
-                        calories: child.recipe.calories,
-                        ingredients: child.recipe.ingredients.length,
-                        servings: child.recipe.yield,
-                        bookmark: child.bookmarked
-                    }
-                    service.recipeList.push(recipeObj);
-                })
+                        let recipeObj = {
+                            label: child.recipe.label,
+                            img: child.recipe.image,
+                            calories: child.recipe.calories,
+                            ingredients: child.recipe.ingredients.length,
+                            servings: child.recipe.yield,
+                            bookmark: child.bookmarked
+                        }
+                        service.recipeList.push(recipeObj);
+
+
+                    })
+                    await service.recipeList;
+                }
+                resolve(service.recipeList);
+
+
+
+
+
+
+
+
+                //     data.forEach(function(child, index) {
+                //     let recipeObj = {
+                //         label: child.recipe.label,
+                //         img: child.recipe.image,
+                //         calories: child.recipe.calories,
+                //         ingredients: child.recipe.ingredients.length,
+                //         servings: child.recipe.yield,
+                //         bookmark: child.bookmarked
+                //     }
+                //     service.recipeList.push(recipeObj);
+                // })
                 // console.log(`object: ${service.recipeList[0].label}`);
 
 
 
                     // return [service.input, service.health, service.time,service.dish];
-                    console.log(service.recipeList);
-                    resolve(service.recipeList);
+                    // console.log(service.recipeList);
 
                     
                 })

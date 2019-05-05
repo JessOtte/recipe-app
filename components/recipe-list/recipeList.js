@@ -2,11 +2,15 @@ function RecipeList(RecipeService, $q,) {
     const ctrl = this;
     ctrl.fetchRecipes = [];
   
-  ctrl.recipeList= [];
+  ctrl.recipeList1= [];
   RecipeService.fetchRecipes()
     .then((response) => {
   
-      ctrl.recipeList = response;
+      console.log(response);
+
+      ctrl.recipeList1 = response;
+
+      // console.log(`recipeList: ${response}`);
       console.log(response);
     });
   
@@ -22,6 +26,11 @@ function RecipeList(RecipeService, $q,) {
     
     angular.module('RecipeApp').component('recipeList', {
       template: `
+
+      <div ng-repeat="recipe in $ctrl.recipeList1">{{recipe}}</div>
+
+
+<!--
       <div class="card-deck" id="container">
       <div ng-repeat="recipe in $ctrl.recipeList" class="card">
         <img class="card-img-top" ng-img={{recipe.img}} alt="{{recipe.label}}">
@@ -31,6 +40,7 @@ function RecipeList(RecipeService, $q,) {
           <p class="card-text"><small class="text-muted">{{recipe.ingredients}}</small></p>
         </div>
       </div>
+      -->
       `, // or use templateUrl
       controller: RecipeList,
   });

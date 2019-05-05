@@ -1,8 +1,8 @@
 function SearchController(RecipeService) {
-    let $ctrl = this;
+    let ctrl = this;
 
 
-    $ctrl.onSearch = (search, time, meal, health) => {
+    ctrl.onSearch = (search, time, meal, health) => {
         RecipeService.fetchRecipes(search, time, meal, health);
     }
 
@@ -13,6 +13,7 @@ angular.module("RecipeApp",)
 .component("searchCriteria", {
     template: `
     <recipe-list></recipe-list>
+
     <input ng-model="userInput" placeholder="Search recipes!"/>
     <select ng-model="time">
         <option></option>
