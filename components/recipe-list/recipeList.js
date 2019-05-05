@@ -1,36 +1,37 @@
 function RecipeList(RecipeService, $q,) {
     const ctrl = this;
-    ctrl.fetchRecipes = [];
   
-  ctrl.recipeList1= [];
-  RecipeService.fetchRecipes()
+  ctrl.recipeList = [];
+
+  ctrl.callSearch = (search, time, meal, health) => {
+    RecipeService.fetchRecipes(search, time, meal, health)
     .then((response) => {
+      let recipeData = response;
+      recipeData.forEach(function(child, index) {
+        let recipeObj = {
+            label: child.recipe.label,
+            img: child.recipe.image,
+            calories: child.recipe.calories,
+            ingredients: child.recipe.ingredients.length,
+            servings: child.recipe.yield,
+            bookmark: child.bookmarked
+        }
+        ctrl.recipeList.push(recipeObj);
+        console.log(ctrl.recipeList);
+    })
   
-      console.log(response);
 
-      ctrl.recipeList1 = response;
-
-      // console.log(`recipeList: ${response}`);
-      console.log(response);
     });
-  
-  
-  
-    // ctrl.recipesList = [
-    //   {    },
-    // ] 
-     
+
   }
+     
+}
   
-  
-    
-    angular.module('RecipeApp').component('recipeList', {
+    angular.module('RecipeApp')
+    .component('recipeList', {
       template: `
 
-      <div ng-repeat="recipe in $ctrl.recipeList1">{{recipe}}</div>
-
-
-<!--
+      <search-criteria get-list="$ctrl.callSearch(search, time, meal, health)"></search-criteria>
       <div class="card-deck" id="container">
       <div ng-repeat="recipe in $ctrl.recipeList" class="card">
         <img class="card-img-top" ng-img={{recipe.img}} alt="{{recipe.label}}">
@@ -40,9 +41,10 @@ function RecipeList(RecipeService, $q,) {
           <p class="card-text"><small class="text-muted">{{recipe.ingredients}}</small></p>
         </div>
       </div>
-      -->
       `, // or use templateUrl
       controller: RecipeList,
+
+
   });
   
   
