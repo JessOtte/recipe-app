@@ -3,7 +3,6 @@ function SearchController(RecipeService) {
 
     ctrl.onSearch = (search, time, meal, health) => {
         // RecipeService.fetchRecipes(search, time, meal, health);
-
         ctrl.getList({
             search:search,
             time: time,
