@@ -6,21 +6,13 @@ angular
     .config(["$routeProvider", ($routeProvider) => {
         $routeProvider
             // When the user visits the display route...
-            .when("/home", {
+            .when("/favorites-page", {
                 // Load the display component
-                // template: "<home></home>"
+                template: "<favorites-page></favorites-page>"
             })
-            .when("/about-me", {
-                // Load the display component
-                // template: "<about-me></about-me>"
+            .when("/search-criteria", {
+            //     // Load the display component
+            template: "<search-criteria></search-criteria>"
             })
-            .when("/portfolio", {
-                // Load the display component
-                // template: "<portfolio></portfolio>"
-            })
-            .when("/resume", {
-                // Load the display component
-                // template: "<resume></resume>"
-            })
-            .otherwise({ redirectTo: "/home" });
+            // .otherwise({ redirectTo: "/search-criteria" });
     }]);

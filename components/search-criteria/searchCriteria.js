@@ -8,7 +8,7 @@ function SearchController(RecipeService) {
 
 }
 
-angular.module("RecipeApp",)
+angular.module("RecipeApp")
 // .service("RecipeService", ["$http", RecipeService])
 .component("searchCriteria", {
     template: `
@@ -34,7 +34,7 @@ angular.module("RecipeApp",)
         <option value="vegetarian">Vegetarian</option>
         <option value="vegan">Vegan</option>
     </select>
-    <button ng-click="$ctrl.onSearch(userInput, time, meal, health)">GO</button>
+    <button href="#!/recipe-list" ng-click="$ctrl.onSearch(userInput, time, meal, health)">GO</button>
     </div>
     
 

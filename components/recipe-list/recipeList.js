@@ -55,7 +55,7 @@ angular.module('RecipeApp').component('recipeList', {
         <h5 class="card-title">{{recipe.label}}</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         <p class="card-text"><small class="text-muted">Number of Ingredients: {{recipe.ingredients}} </br> Calories: {{recipe.calories}}</small></p>
-        <a href="#" class="btn btn-primary">See Recipe</a>
+        <a href="#!/recipe-details" class="btn btn-primary">See Recipe</a>
       </div>
     </div>
     `, 
