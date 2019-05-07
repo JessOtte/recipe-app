@@ -10,9 +10,9 @@ angular
                 // Load the display component
                 template: "<favorites-page></favorites-page>"
             })
-            .when("/search-criteria", {
+            .when("/recipe-list", {
             //     // Load the display component
-            template: "<search-criteria></search-criteria>"
+            template: "<recipe-list></recipe-list>"
             })
-            // .otherwise({ redirectTo: "/search-criteria" });
+            .otherwise({ redirectTo: "/recipe-list" });
     }]);

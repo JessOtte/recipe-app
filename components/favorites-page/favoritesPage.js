@@ -64,12 +64,30 @@ angular
 `
 });
 
+        // }],
 
-// //     template: `
-// // <div class="container">
-// // <h1>FAVORITES</h1>
-// // <p>Your Favorites</p>
-// // <filter-component search="search"></filter-component>
-// // <-list-component search="search" tasks="$ctrl.favoritesList" remove-task="$ctrl.removeRecipe()"></list-component>
-// // </div>`
-// });
+//         template: `
+// <div class="container">
+// <h1>Favorites</h1>
+// <p>Your Favorites</p>
+// <div ng-repeat="recipe in $ctrl.favs">
+// <p style="color:white;">{{recipe.label}}</p>
+// <button>X</button>
+
+// <recipe-details recipe="recipe"></recipe-details>
+
+// </div>
+// </div>`,
+        bindings: {
+            favs: "="
+        }
+
+
+        //     template: `
+        // <div class="container">
+        // <h1>FAVORITES</h1>
+        // <p>Your Favorites</p>
+        // <filter-component search="search"></filter-component>
+        // <-list-component search="search" tasks="$ctrl.favoritesList" remove-task="$ctrl.removeRecipe()"></list-component>
+        // </div>`
+    // });

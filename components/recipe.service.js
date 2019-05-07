@@ -1,26 +1,27 @@
 function RecipeService($http, $q) {
     const service = this;
+
+
+    //jessa creds
     service.APP_KEY = "347156a4086f1d41a3e7afec3aa99d76";
     service.APP_ID = "130a79d6";
+
+    //alex creds - backup credentials
+    // service.APP_KEY = "8bba960e00b73d0a7da5daaa650988e3	";
+    // service.APP_ID = "c027a9cd";
+
     service.input = null;
     service.health = null;
     service.time = null;
-    service.dish= null;
-    // service.dataList = [];
+    // service.dish= null;
     service.recipeList = [];
-    
+    service.fetchRecipes = (search, time, meal, health) => {
 
-
-
-    service.fetchRecipes = (searchInput, time, meal, health ) => {
-
-        return $q(function(resolve, reject) {
-            service.input = searchInput;
+        return $q(function (resolve, reject) {
+            service.input = search;
             service.health = health;
             service.time = time;
             service.meal = meal;
-
-
             $http({
                 url: `https://api.edamam.com/search`,
                 method: `GET`,
@@ -29,44 +30,22 @@ function RecipeService($http, $q) {
                     app_id: service.APP_ID,
                     app_key: service.APP_KEY,
                     Health: service.health,
-                    DishType: service.dishType,
+                    DishType: service.meal,
                     time: service.time
+
                 }
             })
-            .then((response) => {
-                let data = response.data.hits;
-                console.log(data);
-
-                    data.forEach(function(child, index) {
-                    let recipeObj = {
-                        label: child.recipe.label,
-                        img: child.recipe.image,
-                        calories: child.recipe.calories,
-                        ingredients: child.recipe.ingredients.length,
-                        servings: child.recipe.yield,
-                        bookmark: child.bookmarked
-                    }
-                    service.recipeList.push(recipeObj);
+                .then((response) => {
+                    let data = response.data.hits;
+                    resolve(data);
                 })
-                // console.log(`object: ${service.recipeList[0].label}`);
-
-
-
-                    // return [service.input, service.health, service.time,service.dish];
-                    console.log(service.recipeList);
-                    resolve(service.recipeList);
-
-                    
+                .catch((error) => {
+                    reject(error);
                 })
-            .catch((error) => {
-                reject(error);
-            })
-
-
         })
-
-
     }
+
+
 
 }
 
