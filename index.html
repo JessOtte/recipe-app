@@ -2,63 +2,61 @@
 <html lang="en" ng-app="RecipeApp">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Recipe App</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="bootstrap.css">
-  <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recipe App</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
 
-  <link rel="shortcut icon" href="teal-star-favicon.ico" />
+    <link rel="shortcut icon" href="teal-star-favicon.ico" />
 </head>
 
 <body>
     <nav class="nav-container">
-     
-        <div class="logo">
-            Millennial Meals
-        </div>
-       
-           <ul class="nav-items">
-             <li class="nav-item"><a href="#Favorites">Favorites</a></li>
-             <li class="nav-item"><a href="#Log In">Log In</a></li>
-           </ul>
-   </nav>
-   <div id="search-box">
-      <!-- <search-criteria></search-criteria> -->
-   </div>
 
-  <main>
-    <!-- <recipe-details></recipe-details> -->
+        <div class="logo">Millennial Meals</div>
+
+        <ul class="nav-items">
+            <!-- I changed this so that it would route to favorites -->
+            <li class="nav-item"><a href="#!/favorites-page">Favorites</a></li>
+            <li class="nav-item"><a href="#!/recipe-list">Search</a></li>
+            <li class="nav-item"><a href="#Log In">Log In</a></li>
+        </ul>
+    </nav>
+
+    <main id="main" ng-view>
+        <!-- <recipe-details></recipe-details> -->
 
 
-    <recipe-list></recipe-list>
+        <!-- <recipe-list></recipe-list>
+        <favorites-page></favorites-page> -->
 
-    <!-- <div class="card-deck" id="container">
+        <!-- <div class="card-deck" id="container">
                 <div ng-repeat="recipe in $ctrl.recipeList" class="card">
-                  <img class="card-img-top" ng-img={{recipe.img}} alt="{{recipe.label}}">
-                  <div class="card-body">
+                <img class="card-img-top" ng-img={{recipe.img}} alt="{{recipe.label}}">
+                <div class="card-body">
                     <h5 class="card-title">{{recipe.label}}</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <p class="card-text"><small class="text-muted">{{recipe.ingredients}}</small></p>
-                  </div>
+                </div>
                 </div> -->
 
 
 
-  </main>
+    </main>
 
 
-  <script src="https://code.angularjs.org/1.7.8/angular.js"></script>
-  <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.7.8/angular.js"></script>
+    <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
 
-  <!-- <script src="app.config.js"></script> -->
-  <script src="app.module.js"></script>
-  <script src="components/favorites-page/favoritesPage.js"></script>
-  <script src="components/recipe-list/recipeList.js"></script>
-  <script src="components/search-criteria/searchCriteria.js"></script>
-  <script src="components/recipe.service.js"></script>
-  <script src="components/recipe-details/recipeDetails.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="components/favorites-page/favoritesPage.js"></script>
+    <script src="components/recipe-list/recipeList.js"></script>
+    <script src="components/search-criteria/searchCriteria.js"></script>
+    <script src="components/recipe.service.js"></script>
+    <script src="components/recipe-details/recipeDetails.js"></script>
 </body>
 
 </html>
