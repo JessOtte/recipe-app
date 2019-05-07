@@ -9,13 +9,6 @@ function SearchController(RecipeService) {
             meal: meal,
             health: health
           });
-
-        // ctrl.userSearch = {
-        //     search: search,
-        //     time: time,
-        //     meal: meal,
-        //     health, health
-        // }
     }
 }
 

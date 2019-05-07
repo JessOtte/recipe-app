@@ -7,7 +7,6 @@ function RecipeList(RecipeService, $q) {
   ctrl.callSearch = (search, time, meal, health) => {
     RecipeService.fetchRecipes(search, time, meal, health)
       .then((response) => {
-        console.log(response);
         let recipeData = response;
         recipeData.forEach(function (child, index) {
           let recipeObj = {
@@ -26,9 +25,11 @@ function RecipeList(RecipeService, $q) {
 
   ctrl.callFavorites = (favoriteRecipe) => {
     // RecipeService.setFavorites(favoriteRecipe);
-    ctrl.favoritesList.push(favoriteRecipe);
-    console.log(ctrl.favoritesList);
-    return ctrl.favoritesList;
+    // ctrl.favoritesList.push(favoriteRecipe);
+    // console.log(ctrl.favoritesList);
+    // return ctrl.favoritesList;
+    RecipeService.setFavorites(favoriteRecipe);
+    console.log(favoriteRecipe);
   }
 
 
@@ -58,5 +59,3 @@ angular.module('RecipeApp')
 
 
   });
-
-

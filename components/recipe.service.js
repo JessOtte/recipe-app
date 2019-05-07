@@ -1,6 +1,7 @@
 function RecipeService($http, $q) {
     const service = this;
-
+    service.favoriteList = [];
+    // service.favoriteData = null;
 
     //jessa creds
     service.APP_KEY = "347156a4086f1d41a3e7afec3aa99d76";
@@ -16,6 +17,7 @@ function RecipeService($http, $q) {
     // service.dish= null;
     service.recipeList = [];
     service.fetchRecipes = (search, time, meal, health) => {
+
 
         return $q(function (resolve, reject) {
             service.input = search;
@@ -43,6 +45,14 @@ function RecipeService($http, $q) {
                     reject(error);
                 })
         })
+    }
+
+    service.setFavorites = (favorites) => {
+        service.favoriteList.push(favorites);
+    }
+
+    service.getFavorites = () => {
+        return service.favoriteList;
     }
 
 
