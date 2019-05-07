@@ -12,7 +12,7 @@ function SearchController(RecipeService) {
     }
 }
 
-angular.module("RecipeApp",)
+angular.module("RecipeApp")
 // .service("RecipeService", ["$http", RecipeService])
 .component("searchCriteria", {
     template: `
@@ -40,7 +40,6 @@ angular.module("RecipeApp",)
     </select>
     <button ng-click="$ctrl.onSearch(userInput, time, meal, health)">GO</button>
     </div>
-    
 
     
     `,

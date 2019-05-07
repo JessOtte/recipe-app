@@ -1,17 +1,17 @@
 function RecipeService($http, $q) {
     const service = this;
     service.favoriteList = [];
-    service.favoriteData = null;
+    // service.favoriteData = null;
 
 
 
     //jessa creds
-    // service.APP_KEY = "347156a4086f1d41a3e7afec3aa99d76";
-    // service.APP_ID = "130a79d6";
+    service.APP_KEY = "347156a4086f1d41a3e7afec3aa99d76";
+    service.APP_ID = "130a79d6";
 
     //alex creds - backup credentials
-    service.APP_KEY = "8bba960e00b73d0a7da5daaa650988e3	";
-    service.APP_ID = "c027a9cd";
+    // service.APP_KEY = "8bba960e00b73d0a7da5daaa650988e3	";
+    // service.APP_ID = "c027a9cd";
 
     service.input = null;
     service.health = null;
