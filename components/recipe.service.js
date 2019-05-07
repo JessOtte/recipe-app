@@ -3,8 +3,6 @@ function RecipeService($http, $q) {
     service.favoriteList = [];
     // service.favoriteData = null;
 
-
-
     //jessa creds
     service.APP_KEY = "347156a4086f1d41a3e7afec3aa99d76";
     service.APP_ID = "130a79d6";
