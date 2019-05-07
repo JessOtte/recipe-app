@@ -5,11 +5,14 @@ angular
 
     .component("favoritesPage", {
         // bindings: {},
-        controller: [function (RecipeService) {
+        controller: ['RecipeService',function (RecipeService) {
             // console.log(`Is it working: ${RecipeService.fetchRecipes}`);
             const ctrl = this;
             ctrl.search = "";
+            ctrl.favs = null;
 
+            ctrl.favs = RecipeService.getFavorites();
+            console.log(ctrl.favs);
 
             // console.log(ctrl.favorites);
 
@@ -54,19 +57,22 @@ angular
         }],
 
         template: `
-<div class="container">
-<h1>Favorites</h1>
-<p>Your Favorites</p>
-<div ng-repeat="recipe in $ctrl.favs">
-<p style="color:white;">{{recipe.label}}</p>
-<button>X</button>
-
-<recipe-details recipe="recipe"></recipe-details>
-
-</div>
-</div>`,
+            <section id="favorites-page">
+                <div class="container">
+                    <h1>Favorites</h1>
+                    <p>Your Favorites</p>
+                    <div ng-repeat="recipe in $ctrl.favs">
+                        <p style="color:white;">{{recipe.label}}</p>
+                        <button>X</button>
+                        <!--
+                        <recipe-details recipe="recipe"></recipe-details>
+                        -->
+                    </div>
+                </div>
+            </section>
+        `,
         bindings: {
-            favs: "="
+            // favs: "<"
         }
 
 

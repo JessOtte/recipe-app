@@ -28,11 +28,14 @@
       <!-- <search-criteria></search-criteria> -->
    </div>
 
+   <a href="#!/favorites-page" style="color:white;">Favorites Link</a>
+   <a href="#!/recipe-list" style="color:white;">Search</a>
+
+
   <main>
     <!-- <recipe-details></recipe-details> -->
-
-
-    <recipe-list></recipe-list>
+    <section ng-view></section>
+    <!-- <recipe-list></recipe-list> -->
 
     <!-- <div class="card-deck" id="container">
                 <div ng-repeat="recipe in $ctrl.recipeList" class="card">
@@ -52,8 +55,9 @@
   <script src="https://code.angularjs.org/1.7.8/angular.js"></script>
   <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
 
-  <!-- <script src="app.config.js"></script> -->
   <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+
   <script src="components/favorites-page/favoritesPage.js"></script>
   <script src="components/recipe-list/recipeList.js"></script>
   <script src="components/search-criteria/searchCriteria.js"></script>
