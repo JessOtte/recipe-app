@@ -15,18 +15,19 @@
 <body>
     <nav class="nav-container">
 
-        <div class="logo">Millennial Meals</div>
+        <div>
+                <a class="logo" href="#!/index">Millennial Meals</a>
+            </div>
 
         <ul class="nav-items">
             <!-- I changed this so that it would route to favorites -->
             <li class="nav-item"><a href="#!/favorites-page">Favorites</a></li>
             <li class="nav-item"><a href="#!/recipe-list">Search</a></li>
-            <li class="nav-item"><a href="#Log In">Log In</a></li>
         </ul>
     </nav>
 
     <main id="main" ng-view>
-        <!-- <recipe-details></recipe-details> -->
+        <recipe-details></recipe-details>
 
 
         <!-- <recipe-list></recipe-list>

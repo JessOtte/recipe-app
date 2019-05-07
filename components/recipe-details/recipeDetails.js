@@ -94,12 +94,11 @@ function RecipeDetails(RecipeService, $q) {
   angular.module('RecipeApp').component('recipeDetails', {
     template: `
              <div class="card mb-3 text-center" id="container" style="width: 30rem">
-       <img class="card-img-top" src="quesadillas.jpg" alt="{{$ctrl.recipe.label}}">
+       <img class="card-img-top" ng-src="{{$ctrl.recipe.img}}" alt="{{$ctrl.recipe.label}}">
        <div class="card-body">
-         <h5 class="card-title">Quesadilla Dinner for 2</h5>
-         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+         <h5 class="card-title">{{$ctrl.recipe.label}}</h5>
          <p class="card-text"><small class="text-muted">Number of Ingredients: {{$ctrl.recipe.ingredients}} </br> Calories: {{$ctrl.recipe.calories}}</small></p>
-         <a href="#" class="btn btn-primary" ng-click="$ctrl.showDetails()">See Recipe</a>
+         <button class="btn btn-primary" ng-click="callFavorites(recipe)">Add to favorites</button>
          </div>
      </div>
              <div>

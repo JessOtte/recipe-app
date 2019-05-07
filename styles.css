@@ -40,7 +40,7 @@ ul {
 .nav-container {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(9, 9, 32);
+    background-color: #99C24D;
     /* padding: 10px 5px; */
 }
 
@@ -74,6 +74,10 @@ main {
     width: 100%;
     justify-content: center;
     align-items: center;
+}
+
+.search-container {
+  padding-top: 50px;
 }
 
 #search-box {
@@ -162,4 +166,14 @@ main {
   
   .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .logo:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+  .logo:visited {
+    text-decoration: none;
+    color: white;
   }
