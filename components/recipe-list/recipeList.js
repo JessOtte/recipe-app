@@ -1,12 +1,16 @@
 function RecipeList(RecipeService, $q) {
   const ctrl = this;
 
+  ctrl.showDetailModule = false;
+
+  ctrl.recipeData = null;
   ctrl.recipeList = [];
   ctrl.favoritesList = [];
 
-  ctrl.callSearch = (search, time, meal, health) => {
-    RecipeService.fetchRecipes(search, time, meal, health)
+  ctrl.callSearch = (search, time, calories, health) => {
+    RecipeService.fetchRecipes(search, time, calories, health)
       .then((response) => {
+        console.log(response);
         let recipeData = response;
         console.log(recipeData);
 
@@ -16,6 +20,7 @@ function RecipeList(RecipeService, $q) {
             img: child.recipe.image,
             calories: child.recipe.calories,
             ingredients: child.recipe.ingredients.length,
+            ingredientLine: child.recipe.ingredientLines,
             servings: child.recipe.yield,
             bookmark: child.bookmarked,
             ingredientLines: child.recipe.ingredientLines.length
@@ -27,25 +32,33 @@ function RecipeList(RecipeService, $q) {
   }
 
   ctrl.callFavorites = (favoriteRecipe) => {
-    // RecipeService.setFavorites(favoriteRecipe);
-    // ctrl.favoritesList.push(favoriteRecipe);
-    // console.log(ctrl.favoritesList);
-    // return ctrl.favoritesList;
     RecipeService.setFavorites(favoriteRecipe);
-    console.log(favoriteRecipe);
   }
 
-
+  ctrl.callRecipeDetails = (recipe) => {
+    ctrl.showDetailModule = true;
+    RecipeService.setDetails(recipe)
+  }
 
 }
 
 angular.module('RecipeApp')
   .component('recipeList', {
     template: `
-<search-criteria get-list="$ctrl.callSearch(search, time, meal, health)"></search-criteria>
+
+
+
+    
+    <!--<div ng-if="$ctrl.showDetailModule" class="window"></div>-->
+    <div ng-if="$ctrl.showDetailModule" class="show">
+    <recipe-details module-flag="$ctrl.showDetailModule"></recipe-details>
+    </div>
+
+<section id="recipe-list">
+<search-criteria get-list="$ctrl.callSearch(search, time, calories, health)"></search-criteria>
 <div class="card-deck text-center" id="container">
 <div ng-repeat="recipe in $ctrl.recipeList" class="card mb-4">
-<div ng-class="row|($index % 3 == 0)">
+<div ng-class="row">
 <img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
 <div class="card-body">
 <h5 class="card-title">{{recipe.label}}</h5>
@@ -57,6 +70,7 @@ angular.module('RecipeApp')
 <button class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorites</button>
 </div>
 </div>
+
 
 
 `, // or use templateUrl

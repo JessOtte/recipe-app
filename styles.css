@@ -98,6 +98,10 @@ ul {
     padding: 0;
 }
 
+img {
+  object-fit: contain;
+}
+
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -237,7 +241,30 @@ ul {
     text-decoration: none;
     color: white;
   }
+/*********Alex CSS***********/
+  .show {
+    display: flex;
+  }
 
+  .detail-module {
+    position: absolute;
+    z-index: 1000;
+    align-self: center;
+    justify-self: center;
+    left: 34%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .window {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: 500;
+    background-color: white;
+    opacity: .5;
+  }
+/********************/
   #large-card {
     width: 300px;
   }
