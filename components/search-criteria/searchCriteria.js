@@ -17,13 +17,15 @@ angular.module("RecipeApp")
 .component("searchCriteria", {
     template: `
     <div class="search-container">
-    <input ng-model="userInput" placeholder="Search Millennial Meals" id="search-box"/>
+    <div><input ng-model="userInput" placeholder="Search Millennial Meals" id="search-box"/>
+    <button class="btn btn-primary" ng-click="$ctrl.onSearch(userInput, time, meal, health)">GO</button>
+</div>
     <div id="filter"> 
     <select ng-model="time" class="custom-select" style="width:200px;">
-        <option value="" selected="selected">No Time Frame</option>
-        <option value="30">30 Minutes</option>
-        <option value="45">45 Minutes</option>
-        <option value="60">60 Minutes</option>
+        <option value="" selected="selected">Cook Time</option>
+        <option value="30">30 Minutes or Less</option>
+        <option value="45">45 Minutes or Less</option>
+        <option value="60">60 Minutes or Less</option>
     </select>
 
     <select ng-model="meal" class="custom-select" style="width:200px;">
@@ -39,9 +41,10 @@ angular.module("RecipeApp")
         <option value="vegetarian">Vegetarian</option>
         <option value="vegan">Vegan</option>
     </select>
-    <button class="btn btn-primary" ng-click="$ctrl.onSearch(userInput, time, meal, health)">GO</button>
     </div>
+
 </div>
+
     
     `,
     controller: SearchController,
