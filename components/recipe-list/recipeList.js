@@ -1,12 +1,16 @@
 function RecipeList(RecipeService, $q) {
   const ctrl = this;
 
+  ctrl.showDetailModule = false;
+
+  ctrl.recipeData = null;
   ctrl.recipeList = [];
   ctrl.favoritesList = [];
 
   ctrl.callSearch = (search, time, meal, health) => {
     RecipeService.fetchRecipes(search, time, meal, health)
       .then((response) => {
+        console.log(response);
         let recipeData = response;
         recipeData.forEach(function (child, index) {
           let recipeObj = {
@@ -14,6 +18,7 @@ function RecipeList(RecipeService, $q) {
             img: child.recipe.image,
             calories: child.recipe.calories,
             ingredients: child.recipe.ingredients.length,
+            ingredientLine: child.recipe.ingredientLines,
             servings: child.recipe.yield,
             bookmark: child.bookmarked
           }
@@ -24,22 +29,29 @@ function RecipeList(RecipeService, $q) {
   }
 
   ctrl.callFavorites = (favoriteRecipe) => {
-    // RecipeService.setFavorites(favoriteRecipe);
-    // ctrl.favoritesList.push(favoriteRecipe);
-    // console.log(ctrl.favoritesList);
-    // return ctrl.favoritesList;
     RecipeService.setFavorites(favoriteRecipe);
-    console.log(favoriteRecipe);
   }
 
-
+  ctrl.callRecipeDetails = (recipe) => {
+    ctrl.showDetailModule = true;
+    RecipeService.setDetails(recipe)
+  }
 
 }
 
 angular.module('RecipeApp')
   .component('recipeList', {
     template: `
+    <div ng-if="$ctrl.showDetailModule" class="window"></div>
+
+    <div ng-if="$ctrl.showDetailModule" class="show">
+    <recipe-details module-flag="$ctrl.showDetailModule"></recipe-details>
+    </div>
+
 <section id="recipe-list">
+
+
+
 <search-criteria get-list="$ctrl.callSearch(search, time, meal, health)"></search-criteria>
 <div class="card-deck text-center" id="container">
 <div ng-repeat="recipe in $ctrl.recipeList" class="card">
@@ -52,6 +64,7 @@ angular.module('RecipeApp')
 </div>
 </div>
 </section>
+
 
 
 `, // or use templateUrl
