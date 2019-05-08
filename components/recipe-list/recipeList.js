@@ -7,8 +7,8 @@ function RecipeList(RecipeService, $q) {
   ctrl.recipeList = [];
   ctrl.favoritesList = [];
 
-  ctrl.callSearch = (search, time, meal, health) => {
-    RecipeService.fetchRecipes(search, time, meal, health)
+  ctrl.callSearch = (search, time, calories, health) => {
+    RecipeService.fetchRecipes(search, time, calories, health)
       .then((response) => {
         console.log(response);
         let recipeData = response;
@@ -55,10 +55,10 @@ angular.module('RecipeApp')
     </div>
 
 <section id="recipe-list">
-<search-criteria get-list="$ctrl.callSearch(search, time, meal, health)"></search-criteria>
+<search-criteria get-list="$ctrl.callSearch(search, time, calories, health)"></search-criteria>
 <div class="card-deck text-center" id="container">
 <div ng-repeat="recipe in $ctrl.recipeList" class="card mb-4">
-<div ng-class="row|($index % 3 == 0)">
+<div ng-class="row">
 <img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
 <div class="card-body">
 <h5 class="card-title">{{recipe.label}}</h5>

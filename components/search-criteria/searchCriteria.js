@@ -1,12 +1,12 @@
 function SearchController(RecipeService) {
     let ctrl = this;
 
-    ctrl.onSearch = (search, time, meal, health) => {
+    ctrl.onSearch = (search, time, calories, health) => {
         // RecipeService.fetchRecipes(search, time, meal, health);
         ctrl.getList({
             search:search,
             time: time,
-            meal: meal,
+            calories: calories,
             health: health
           });
     }
@@ -28,11 +28,11 @@ angular.module("RecipeApp")
         <option value="60">60 Minutes or Less</option>
     </select>
 
-    <select ng-model="meal" class="custom-select" style="width:200px;">
-        <option value="" selected="selected">All Meal Types</option>
-        <option value="breakfast">Breakfast</option>
-        <option value="lunch">Lunch</option>
-        <option value="dinner">Dinner</option>
+    <select ng-model="calories" class="custom-select" style="width:200px;">
+        <option value="" selected="selected">Calorie Count</option>
+        <option value="200">200</option>
+        <option value="500">500</option>
+        <option value="1000">1000</option>
     </select>
 
     <select ng-model="health" class="custom-select" style="width:200px;">
