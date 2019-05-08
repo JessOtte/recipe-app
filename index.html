@@ -6,27 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Recipe App</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
-
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="shortcut icon" href="teal-star-favicon.ico" />
 </head>
 
 <body>
+        
     <nav class="nav-container">
 
         <div>
-                <a class="logo" href="#!/index">Millennial Meals</a>
+                <a class="logo" href="#!/recipe-list">Millennial Meals</a>
             </div>
 
         <ul class="nav-items">
             <!-- I changed this so that it would route to favorites -->
-            <li class="nav-item"><a href="#!/favorites-page">Favorites</a></li>
-            <li class="nav-item"><a href="#!/recipe-list">Search</a></li>
+            <li class="nav-item"><a href="#!/favorites-page"><span style="color: rgb(240, 45, 38)">❤</span> Favorites</a></li>
+            <!-- <li class="nav-item"><a href="#!/recipe-list">Search</a></li> -->
         </ul>
     </nav>
-
-
     <main id="main" ng-view>
       <!-- <recipe-details></recipe-details> -->
     </main>

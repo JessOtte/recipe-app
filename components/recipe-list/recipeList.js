@@ -12,6 +12,8 @@ function RecipeList(RecipeService, $q) {
       .then((response) => {
         console.log(response);
         let recipeData = response;
+        console.log(recipeData);
+
         recipeData.forEach(function (child, index) {
           let recipeObj = {
             label: child.recipe.label,
@@ -20,7 +22,8 @@ function RecipeList(RecipeService, $q) {
             ingredients: child.recipe.ingredients.length,
             ingredientLine: child.recipe.ingredientLines,
             servings: child.recipe.yield,
-            bookmark: child.bookmarked
+            bookmark: child.bookmarked,
+            ingredientLines: child.recipe.ingredientLines.length
           }
           ctrl.recipeList.push(recipeObj);
         })
@@ -42,28 +45,31 @@ function RecipeList(RecipeService, $q) {
 angular.module('RecipeApp')
   .component('recipeList', {
     template: `
-    <div ng-if="$ctrl.showDetailModule" class="window"></div>
 
+
+
+    
+    <!--<div ng-if="$ctrl.showDetailModule" class="window"></div>-->
     <div ng-if="$ctrl.showDetailModule" class="show">
     <recipe-details module-flag="$ctrl.showDetailModule"></recipe-details>
     </div>
 
 <section id="recipe-list">
-
-
-
 <search-criteria get-list="$ctrl.callSearch(search, time, meal, health)"></search-criteria>
 <div class="card-deck text-center" id="container">
-<div ng-repeat="recipe in $ctrl.recipeList" class="card">
+<div ng-repeat="recipe in $ctrl.recipeList" class="card mb-4">
+<div ng-class="row|($index % 3 == 0)">
 <img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
 <div class="card-body">
 <h5 class="card-title">{{recipe.label}}</h5>
-<p class="card-text"><small class="text-muted">Number of Ingredients: {{recipe.ingredients}} </br> Calories: {{recipe.calories}}</small></p>
+
+<p class="card-text"><small class="text-muted">{{recipe.ingredients}} Ingredients | Calories: 
+<span class="cardParams">{{recipe.calories | number:0}}</span>
+</small></p>
 <button class="btn btn-primary" ng-click="$ctrl.callRecipeDetails(recipe)">Recipe Details</button>
-<button class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorite</button>
+<button class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorites</button>
 </div>
 </div>
-</section>
 
 
 
