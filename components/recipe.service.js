@@ -17,14 +17,14 @@ function RecipeService($http, $q) {
     service.time = null;
     // service.dish= null;
     service.recipeList = [];
-    service.fetchRecipes = (search, time, calories, health) => {
+    service.fetchRecipes = (search, time, diet, health) => {
 
 
         return $q(function (resolve, reject) {
             service.input = search;
             service.health = health;
             service.time = time;
-            service.meal = calories;
+            service.diet = diet;
             $http({
                 url: `https://api.edamam.com/search`,
                 method: `GET`,
@@ -33,8 +33,9 @@ function RecipeService($http, $q) {
                     app_id: service.APP_ID,
                     app_key: service.APP_KEY,
                     health: service.health,
-                    calories: service.calories,
-                    time: service.time
+                    diet: service.diet,
+                    time: service.time,
+                    from: 12
 
                 }
             })

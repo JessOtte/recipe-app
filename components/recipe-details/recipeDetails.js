@@ -5,6 +5,7 @@ function RecipeDetails(RecipeService, $q) {
   // ctrl.fetchRecipes = [];
   ctrl.fullRecipe = null;
   ctrl.fullRecipe = RecipeService.getDetails();
+  console.log(ctrl.fullRecipe);
 
   ctrl.closeModule = () => {
     ctrl.moduleFlag = false;
@@ -23,11 +24,11 @@ function RecipeDetails(RecipeService, $q) {
        <img class="card-img-top" ng-src="{{$ctrl.fullRecipe.img}}" alt="{{$ctrl.fullRecipe.label}}">
 
        <div class="card-body">
-       <span id="cancel" value="x">x</span>             
+       <span id="cancel" value="x" ng-click="$ctrl.closeModule()">x</span>             
 
          <h2 class="card-title">{{$ctrl.fullRecipe.label}}</h2>
          <p><small class="text-muted">{{$ctrl.fullRecipe.ingredients}} Ingredients |
-         Calories:{{$ctrl.fullRecipe.calories | number:0}}
+         Calories:{{$ctrl.fullRecipe.diet | number:0}}
           </small>
           </p>
 
