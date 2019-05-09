@@ -22,7 +22,6 @@ function RecipeService($http, $q) {
 
         return $q(function (resolve, reject) {
             service.input = search;
-            service.health = health;
             service.time = time;
             service.diet = diet;
             $http({
@@ -32,9 +31,9 @@ function RecipeService($http, $q) {
                     q: service.input,
                     app_id: service.APP_ID,
                     app_key: service.APP_KEY,
+                    time: service.time,
                     health: service.health,
                     diet: service.diet,
-                    time: service.time,
                     to: 15
                 }
             })

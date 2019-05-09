@@ -24,8 +24,8 @@ function RecipeList(RecipeService, $q) {
             ingredientLine: child.recipe.ingredientLines,
             servings: child.recipe.yield,
             bookmark: child.bookmarked,
-            ingredientLines: child.recipe.ingredientLines.length
-
+            ingredientLines: child.recipe.ingredientLines.length,
+            url: child.recipe.url
           }
           ctrl.recipeList.push(recipeObj);
         })
@@ -48,9 +48,15 @@ angular.module('RecipeApp')
   .component('recipeList', {
     template: `
 
+
+
+    
+    <div ng-if="$ctrl.showDetailModule" class="window"></div>
+
     <div ng-if="$ctrl.showDetailModule" class="show">
     <recipe-details module-flag="$ctrl.showDetailModule"></recipe-details>
     </div>
+
 
     <section id="recipe-list">
     <search-criteria get-list="$ctrl.callSearch(search, time, calories, health)"></search-criteria>
@@ -65,7 +71,7 @@ angular.module('RecipeApp')
     <span class="cardParams">{{recipe.calories | number:0}}</span>
     </small></p>
     <button class="btn btn-primary" ng-click="$ctrl.callRecipeDetails(recipe)">Recipe Details</button>
-    <button class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorites</button>
+    <button id="btn-favorite" class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorites</button>
     </div>
     </div>
     </div>
