@@ -28,7 +28,11 @@ angular
         template: ` 
 
 
+        <div ng-if="$ctrl.showDetailModule" class="window"></div>
 
+        <div ng-if="$ctrl.showDetailModule" id="favorites-model" class="show">
+        <recipe-details module-flag="$ctrl.showDetailModule"></recipe-details>
+        </div>
 
 
             <section id="favorites-page">
@@ -47,6 +51,7 @@ angular
                         <span class="cardParams">{{recipe.calories | number:0}}</span>
                         </small></p>
                         <button class="btn btn-primary" ng-click="$ctrl.removeRecipe($index, recipe)">Remove from Favorites</button>
+                        <button class="btn btn-primary" ng-click="$ctrl.callRecipeDetails(recipe)">Recipe Details</button>
 
                         </div>
 
