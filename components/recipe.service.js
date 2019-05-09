@@ -17,14 +17,13 @@ function RecipeService($http, $q) {
     service.time = null;
     // service.dish= null;
     service.recipeList = [];
-    service.fetchRecipes = (search, time, calories, health) => {
+    service.fetchRecipes = (search, time, diet, health) => {
 
 
         return $q(function (resolve, reject) {
             service.input = search;
             service.time = time;
-            service.health = health;
-            service.calories = calories;
+            service.diet = diet;
             $http({
                 url: `https://api.edamam.com/search`,
                 method: `GET`,
@@ -34,8 +33,8 @@ function RecipeService($http, $q) {
                     app_key: service.APP_KEY,
                     time: service.time,
                     health: service.health,
-                    calories: service.calories
-
+                    diet: service.diet,
+                    to: 15
                 }
             })
                 .then((response) => {
@@ -48,8 +47,21 @@ function RecipeService($http, $q) {
         })
     }
 
-    service.setFavorites = (favorites) => {
-        service.favoriteList.push(favorites);
+    service.setFavorites = (recipe) => {
+            if ( !service.isInFavorites(recipe) )
+            service.favoriteList.push(recipe);
+    }
+
+    service.isInFavorites = (recipe) => {
+        let isInFavorites = false;
+
+        service.favoriteList.forEach( (favorite)=> {
+            if ( recipe.url === favorite.url ) {
+                isInFavorites = true;
+            }
+        })
+
+        return isInFavorites;
     }
 
     service.getFavorites = () => {

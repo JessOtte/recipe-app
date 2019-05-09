@@ -7,17 +7,18 @@ function RecipeList(RecipeService, $q) {
   ctrl.recipeList = [];
   ctrl.favoritesList = [];
 
-  ctrl.callSearch = (search, time, calories, health) => {
-    RecipeService.fetchRecipes(search, time, calories, health)
+  ctrl.callSearch = (search, time, diet, health) => {
+    ctrl.recipeList = [];
+    RecipeService.fetchRecipes(search, time, diet, health)
       .then((response) => {
-        console.log(response);
         let recipeData = response;
-        console.log(recipeData);
 
+        console.log(recipeData);
         recipeData.forEach(function (child, index) {
           let recipeObj = {
             label: child.recipe.label,
             img: child.recipe.image,
+            diet: child.recipe.diet,
             calories: child.recipe.calories,
             ingredients: child.recipe.ingredients.length,
             ingredientLine: child.recipe.ingredientLines,
@@ -51,29 +52,30 @@ angular.module('RecipeApp')
 
     
     <div ng-if="$ctrl.showDetailModule" class="window"></div>
+
     <div ng-if="$ctrl.showDetailModule" class="show">
     <recipe-details module-flag="$ctrl.showDetailModule"></recipe-details>
     </div>
 
-<section id="recipe-list">
-<search-criteria get-list="$ctrl.callSearch(search, time, calories, health)"></search-criteria>
-<div class="card-deck text-center" id="container">
-<div ng-repeat="recipe in $ctrl.recipeList" class="card mb-4">
-<div ng-class="row">
-<img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
-<div class="card-body">
-<h5 class="card-title">{{recipe.label}}</h5>
 
-<p class="card-text"><small class="text-muted">{{recipe.ingredients}} Ingredients | Calories: 
-<span class="cardParams">{{recipe.calories | number:0}}</span>
-</small></p>
-<button class="btn btn-primary" ng-click="$ctrl.callRecipeDetails(recipe)">Recipe Details</button>
-<button id="btn-favorite" class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorites</button>
-</div>
-</div>
-
-
-
+    <section id="recipe-list">
+    <search-criteria get-list="$ctrl.callSearch(search, time, calories, health)"></search-criteria>
+    <div class="container-list">
+    <div ng-repeat="recipe in $ctrl.recipeList" class="card mb-4">
+    <div class="card-deck text-center" id="container">
+    <div ng-class="row">
+    <img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
+    <div class="card-body">
+    <h5 class="card-title">{{recipe.label}}</h5>
+    <p class="card-text"><small class="text-muted">{{recipe.ingredients}} Ingredients | Calories: 
+    <span class="cardParams">{{recipe.calories | number:0}}</span>
+    </small></p>
+    <button class="btn btn-primary" ng-click="$ctrl.callRecipeDetails(recipe)">Recipe Details</button>
+    <button id="btn-favorite" class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorites</button>
+    </div>
+    </div>
+    </div>
+    </section>
 `, // or use templateUrl
     controller: RecipeList,
 
