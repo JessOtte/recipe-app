@@ -46,6 +46,8 @@ angular
                         <span class="cardParams">{{recipe.calories | number:0}}</span>
                         </small></p>
                         <button class="btn btn-primary" ng-click="$ctrl.removeRecipe($index, recipe)">Remove from Favorites</button>
+                        <button class="btn btn-primary" ng-click="$ctrl.callRecipeDetails(recipe)">Recipe Details</button>
+
                         </div>
 
                     </div>

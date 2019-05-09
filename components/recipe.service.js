@@ -35,7 +35,6 @@ function RecipeService($http, $q) {
                     health: service.health,
                     diet: service.diet,
                     time: service.time,
-                    from: 12,
                     to: 15
                 }
             })
