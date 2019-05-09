@@ -13,36 +13,9 @@ angular
             ctrl.favs = RecipeService.getFavorites();
             console.log(ctrl.favs);
 
-            ctrl.favoritesList = [
-                {
-                    label: 'Apple',
-                    img: "img.jpeg",
-                    calories: '10',
-                    ingredients: 1,
-                    servings: 1
-                },
 
-                {
-                    label: 'Pear',
-                    img: "img",
-                    calories: '10',
-                    ingredients: 1,
-                    servings: 1
-                },
-
-                {
-                    label: 'Peach',
-                    img: "img.jpeg",
-                    calories: '10',
-                    ingredients: 1,
-                    servings: 1
-                }
-            ];
-
-            ctrl.removeRecipe = function () {
-                console.log(`Removed from favorites`);
-                let remove;
-                return remove = true;
+            ctrl.removeRecipe = function (key, value) {
+                ctrl.favs.splice(key, 1)
             }
 
         }],
@@ -50,14 +23,22 @@ angular
         template: `
             <section id="favorites-page">
                 <div class="container">
-                    <h1>Favorites</h1>
-                    <p>Your Favorites</p>
-                    <div ng-repeat="recipe in $ctrl.favs">
-                        <p style="color:white;">{{recipe.label}}</p>
-                        <button>X</button>
-                        <!--
-                        <recipe-details recipe="recipe"></recipe-details>
-                        -->
+                    <h1 class="favorites">Your Favorite Recipes</h1>
+                    <p class="favorites">Make your favorite meals at home!</p>
+
+                    <div ng-repeat="recipe in $ctrl.favs" class="card mb-4">
+                        <div class="card-deck text-center">
+                        <div ng-class="row">
+                        <img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
+                        <div class="card-body">
+                        <h5 class="card-title">{{recipe.label}}</h5>
+                        
+                        <p class="card-text"><small class="text-muted">{{recipe.ingredients}} Ingredients | Calories: 
+                        <span class="cardParams">{{recipe.calories | number:0}}</span>
+                        </small></p>
+                        <button class="btn btn-primary" ng-click="$ctrl.removeRecipe($index, recipe)">Remove from Favorites</button>
+                        </div>
+
                     </div>
                 </div>
             </section>

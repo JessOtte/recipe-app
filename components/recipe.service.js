@@ -34,7 +34,8 @@ function RecipeService($http, $q) {
                     app_key: service.APP_KEY,
                     health: service.health,
                     calories: service.calories,
-                    time: service.time
+                    time: service.time,
+                    to: 15
 
                 }
             })
@@ -48,8 +49,21 @@ function RecipeService($http, $q) {
         })
     }
 
-    service.setFavorites = (favorites) => {
-        service.favoriteList.push(favorites);
+    service.setFavorites = (recipe) => {
+            if ( !service.isInFavorites(recipe) )
+            service.favoriteList.push(recipe);
+    }
+
+    service.isInFavorites = (recipe) => {
+        let isInFavorites = false;
+
+        service.favoriteList.forEach( (favorite)=> {
+            if ( recipe.url === favorite.url ) {
+                isInFavorites = true;
+            }
+        })
+
+        return isInFavorites;
     }
 
     service.getFavorites = () => {
