@@ -32,13 +32,21 @@ angular
         </div>
             <section id="favorites-page">
                 <div class="container">
-                    <h1>Favorites</h1>
-                    <p>Your Favorites</p>
-                    <div ng-repeat="recipe in $ctrl.favs">
-                        <p style="color:white;">{{recipe.label}}</p>
-                        <button ng-click="$ctrl.removeRecipe($index, recipe)">X</button>
-                        <button class="btn btn-primary" ng-click="$ctrl.callRecipeDetails(recipe)">Recipe Details</button>
+                    <h1 class="favorites">Your Favorite Recipes</h1>
+                    <p class="favorites">Make your favorite meals at home!</p>
 
+                    <div ng-repeat="recipe in $ctrl.favs" class="card mb-4">
+                        <div class="card-deck text-center">
+                        <div ng-class="row">
+                        <img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
+                        <div class="card-body">
+                        <h5 class="card-title">{{recipe.label}}</h5>
+                        
+                        <p class="card-text"><small class="text-muted">{{recipe.ingredients}} Ingredients | Calories: 
+                        <span class="cardParams">{{recipe.calories | number:0}}</span>
+                        </small></p>
+                        <button class="btn btn-primary" ng-click="$ctrl.removeRecipe($index, recipe)">Remove from Favorites</button>
+                        </div>
 
                     </div>
                 </div>

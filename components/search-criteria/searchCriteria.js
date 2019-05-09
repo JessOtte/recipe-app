@@ -16,9 +16,21 @@ angular.module("RecipeApp")
 // .service("RecipeService", ["$http", RecipeService])
 .component("searchCriteria", {
     template: `
+
     <div class="search-container">
+    <!--
+
     <div><input ng-model="userInput" placeholder="Search Millennial Meals" id="search-box"/>
     <button class="btn btn-primary" ng-click="$ctrl.onSearch(userInput, time, diet, health)">GO</button>
+    -->
+
+
+<!--jessa-->
+    <div class="search"><input ng-model="userInput" placeholder="Search Millennial Meals" id="search-box"/>
+    <button class="btn btn-primary go" ng-click="$ctrl.onSearch(userInput, time, meal, health)">GO</button>
+<!--jessa-->
+
+
 </div>
     <div id="filter"> 
     <select ng-model="time" class="custom-select" style="width:200px;">

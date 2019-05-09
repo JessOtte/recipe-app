@@ -25,7 +25,7 @@ function RecipeList(RecipeService, $q) {
             servings: child.recipe.yield,
             bookmark: child.bookmarked,
             ingredientLines: child.recipe.ingredientLines.length
-            
+
           }
           ctrl.recipeList.push(recipeObj);
         })
@@ -48,10 +48,6 @@ angular.module('RecipeApp')
   .component('recipeList', {
     template: `
 
-
-
-    
-    <!--<div ng-if="$ctrl.showDetailModule" class="window"></div>-->
     <div ng-if="$ctrl.showDetailModule" class="show">
     <recipe-details module-flag="$ctrl.showDetailModule"></recipe-details>
     </div>
@@ -60,6 +56,7 @@ angular.module('RecipeApp')
 <search-criteria get-list="$ctrl.callSearch(search, time, diet, health)"></search-criteria>
 <div class="card-deck text-center" id="container">
 <div ng-repeat="recipe in $ctrl.recipeList" class="card mb-4">
+<div class="card-deck text-center" id="container">
 <div ng-class="row">
 <img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
 <div class="card-body">
@@ -71,10 +68,10 @@ angular.module('RecipeApp')
 <button class="btn btn-primary" ng-click="$ctrl.callRecipeDetails(recipe)">Recipe Details</button>
 <button class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorites</button>
 </div>
+
 </div>
-
-
-
+</div>
+</section>
 `, // or use templateUrl
     controller: RecipeList,
 
