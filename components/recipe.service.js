@@ -22,9 +22,9 @@ function RecipeService($http, $q) {
 
         return $q(function (resolve, reject) {
             service.input = search;
-            service.health = health;
             service.time = time;
-            service.meal = calories;
+            service.health = health;
+            service.calories = calories;
             $http({
                 url: `https://api.edamam.com/search`,
                 method: `GET`,
@@ -32,9 +32,9 @@ function RecipeService($http, $q) {
                     q: service.input,
                     app_id: service.APP_ID,
                     app_key: service.APP_KEY,
+                    time: service.time,
                     health: service.health,
-                    calories: service.calories,
-                    time: service.time
+                    calories: service.calories
 
                 }
             })
