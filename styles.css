@@ -15,9 +15,7 @@ html, body {
     /* text-align: left; */
       background-color: #fff;
     
-        background: #2E4057;
-        /* height: 100%;
-        width: 100%; */
+        background: black;
 
 
 
@@ -26,7 +24,7 @@ html, body {
 
     main {
       margin: 0 auto;
-      padding: 50px 0px 0px 0px;
+      /* padding: 50px 0px 0px 0px; */
       border: none;
       /* height: 100vh; */
       font-family: 'Lato', sans-serif;
@@ -34,14 +32,23 @@ html, body {
       font-weight: 400;
       line-height: 1.5;
       /* text-align: left; */
-        background-color: #fff;
+        background-color: black;
       
-          background: #2E4057;
+          background: black;
           /* height: 100%;
           width: 100%; */
           display: flex;
           justify-content: center;
           align-items: center;
+
+          height: 100%;
+          width: 100%;
+          background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)), url("OH3C840.jpg");
+          background-size:cover;
+          background-repeat:no-repeat;
+          background-attachment:fixed;
+          z-index: 1;
+
       }
 
 
@@ -64,6 +71,11 @@ html, body {
       text-decoration: underline;
       margin: 1px;
     }
+
+    h1 {
+      letter-spacing: 3px;
+    }
+
 
 /* basic link setup. */
 a {
@@ -108,7 +120,14 @@ img {
     justify-content: space-between;
     background-color: #99C24D;
     padding: 5px 20px;
-}
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+  }
+
+  .container {
+    margin: 50px;
+  }
 
 .logo {
     font-size: 20px;
@@ -141,6 +160,8 @@ img {
   display: flex;
   flex-direction: column;
   justify-content:center;
+  margin: 100px;
+
 }
 
 .search {
@@ -159,6 +180,7 @@ img {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content:center;
+  margin: -301px 0;
 }
 
 #search-box {
@@ -305,8 +327,8 @@ h1 {
     position: fixed;
     z-index: 9999;
     overflow-y: scroll;
-    margin-left: 25%;
-    top: 5vh;
+    margin-left: 30%;
+    top: 10vh;
 }
 
 .module-title-bar {
@@ -547,10 +569,11 @@ div.card-body {
 
 }
 
-.hero {
-  width:100vw;height:100vh;
+.hero-image {
+  width:100vw;
+  height:100vh;
   /* display:flex; */
-  justify-content:center;align-items:center;text-align:center;color:#fff;background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
-  url(https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg);background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;
+  color:#fff;
+
 };
 
