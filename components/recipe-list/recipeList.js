@@ -59,7 +59,7 @@ angular.module('RecipeApp')
 
 
     <section id="recipe-list">
-    <search-criteria get-list="$ctrl.callSearch(search, time, calories, health)"></search-criteria>
+    <search-criteria get-list="$ctrl.callSearch(search, time, diet, health)"></search-criteria>
     <div class="container-list">
     <div ng-repeat="recipe in $ctrl.recipeList" class="card mb-4">
     <div class="card-deck text-center" id="container">
