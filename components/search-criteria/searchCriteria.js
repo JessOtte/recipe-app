@@ -1,12 +1,12 @@
 function SearchController(RecipeService) {
     let ctrl = this;
 
-    ctrl.onSearch = (search, time, calories, health) => {
+    ctrl.onSearch = (search, time, diet, health) => {
         // RecipeService.fetchRecipes(search, time, meal, health);
         ctrl.getList({
             search:search,
             time: time,
-            calories: calories,
+            diet: diet,
             health: health
           });
     }
@@ -16,9 +16,21 @@ angular.module("RecipeApp")
 // .service("RecipeService", ["$http", RecipeService])
 .component("searchCriteria", {
     template: `
+
     <div class="search-container">
+    <!--
+
+    <div><input ng-model="userInput" placeholder="Search Millennial Meals" id="search-box"/>
+    <button class="btn btn-primary" ng-click="$ctrl.onSearch(userInput, time, diet, health)">GO</button>
+    -->
+
+
+<!--jessa-->
     <div class="search"><input ng-model="userInput" placeholder="Search Millennial Meals" id="search-box"/>
     <button class="btn btn-primary go" ng-click="$ctrl.onSearch(userInput, time, meal, health)">GO</button>
+<!--jessa-->
+
+
 </div>
     <div id="filter"> 
     <select ng-model="time" class="custom-select" style="width:200px;">
@@ -28,16 +40,16 @@ angular.module("RecipeApp")
         <option value="60">60 Minutes or Less</option>
     </select>
 
-    <select ng-model="calories" class="custom-select" style="width:200px;">
-        <option value="" selected="selected">Calorie Count</option>
-        <option value="200">200</option>
-        <option value="500">500</option>
-        <option value="1000">1000</option>
+    <select ng-model="diet" class="custom-select" style="width:200px;">
+        <option value="" selected="selected">Diet Type</option>
+        <option value="balanced">Balanced</option>
+        <option value="low-carb">Low Carb</option>
+        <option value="low-fat">Low Fat</option>
     </select>
 
     <select ng-model="health" class="custom-select" style="width:200px;">
         <option value="" selected="selected">All Health Types</option>
-        <option value="gluten-free">Gluten Free</option>
+        <option value="peanut-free">Peanut Free</option>
         <option value="vegetarian">Vegetarian</option>
         <option value="vegan">Vegan</option>
     </select>
