@@ -32,7 +32,7 @@ function RecipeDetails(RecipeService, $q) {
     <div ng-if="$ctrl.showDetailModule" class="show">
     <recipe-details module-flag="$ctrl.showDetailModule"></recipe-details>
     </div>
-             <div class="card" id="detail-module" style="width: 35rem">
+             <div class="card" id="detail-module" style="width: 40vw">
 
 
        <div id="module-body" class="card-body">
