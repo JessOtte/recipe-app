@@ -16,13 +16,9 @@ angular.module("RecipeApp")
 // .service("RecipeService", ["$http", RecipeService])
 .component("searchCriteria", {
     template: `
-
+<section class="hero-image">
     <div class="search-container">
-    <!--
 
-    <div><input ng-model="userInput" placeholder="Search Millennial Meals" id="search-box"/>
-    <button class="btn btn-primary" ng-click="$ctrl.onSearch(userInput, time, diet, health)">GO</button>
-    -->
 
 
 <!--jessa-->
@@ -48,7 +44,7 @@ angular.module("RecipeApp")
     </select>
 
     <select ng-model="health" class="custom-select" style="width:200px;">
-        <option value="" selected="selected">All Health Types</option>
+        <option value="" selected="selected">Diet Restrictions</option>
         <option value="peanut-free">Peanut Free</option>
         <option value="vegetarian">Vegetarian</option>
         <option value="vegan">Vegan</option>
@@ -56,7 +52,7 @@ angular.module("RecipeApp")
     </div>
 
 </div>
-
+</section>
     
     `,
     controller: SearchController,

@@ -1,5 +1,4 @@
 * {
-    padding: 3px;
     box-sizing: border-box;
     }
 
@@ -19,6 +18,8 @@ html, body {
         background: #2E4057;
         /* height: 100%;
         width: 100%; */
+
+
 
     
     }
@@ -67,6 +68,7 @@ html, body {
 /* basic link setup. */
 a {
   text-decoration: none;
+  color: white;
   /* display: inline-block;
   font-weight: 400;
   color: white;
@@ -303,10 +305,34 @@ h1 {
     position: fixed;
     z-index: 9999;
     overflow-y: scroll;
-    height: 80%;
-    bottom: 25px;
-    padding: 30px;
+    margin-left: 25%;
+    top: 5vh;
 }
+
+.module-title-bar {
+  background-color: #2E4057;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  border-top-left-radius: calc(0.5rem - 3px);
+  border-top-right-radius: calc(0.5rem - 3px);
+      /* margin-top: 90px; */ 
+      /* you need margin-top:90px for the longer list of ingredients. Otherwise, the title gets cut off at the top. If margin-top: 90 is left on for recipes with a small ingredient count will have the title bar pushed down 90 pixels from the top */
+}
+
+#module-title {
+  color: white;
+  margin: 0;
+
+}
+
+.module-body {
+  border: 2px solid #2E4057;
+}
+
+#module-img {
+  border-radius: calc(0.5rem - 3px);
+}
+
 
 /* .modal-background {
   modal background fixed across whole screen
@@ -397,13 +423,11 @@ h1 {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   
-  @media screen and (prefers-reduced-motion: reduce) {
     .btn {
       transition: none;
       color: white;
 
     }
-  }
   
   .btn:hover {
     color: white;
@@ -495,3 +519,38 @@ div.card-body {
   color: white;
   background-color: red;
 }
+
+.text-center{
+  text-align: center;
+}
+
+.body-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+.left-container {
+  flex-basis: 33.3%;
+  padding: 0px 20px;
+
+}
+
+.middle-container {
+  flex-basis: 33.3%;
+  padding: 0px 20px;
+
+}
+
+.right-container {
+  flex-basis: 33.3%;
+  padding: 0px 20px;
+
+}
+
+.hero {
+  width:100vw;height:100vh;
+  /* display:flex; */
+  justify-content:center;align-items:center;text-align:center;color:#fff;background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+  url(https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg);background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;
+};
+

@@ -35,12 +35,14 @@ function RecipeDetails(RecipeService, $q) {
              <div class="card" id="detail-module" style="width: 35rem">
 
 
-       <div class="card-body">
+       <div id="module-body" class="card-body">
+       <div class="module-title-bar">
        <a class="closeButton" id="cancel" ng-click="$ctrl.closeModule()">X</a>           
 
-         <h2 class="card-title">{{$ctrl.fullRecipe.label}}</h2>
+         <h2 id="module-title" id="class="card-title">{{$ctrl.fullRecipe.label}}</h2>
          <p><small class="text-muted">{{$ctrl.fullRecipe.ingredients}} Ingredients |
          Calories: {{$ctrl.fullRecipe.calories | number:0}}
+         </div>
 
 <!-- REMOVE
        <span id="cancel" value="x" ng-click="$ctrl.closeModule()">x</span>             
@@ -50,7 +52,7 @@ function RecipeDetails(RecipeService, $q) {
          Calories:{{$ctrl.fullRecipe.diet | number:0}}
 -->
 
-          </small>
+          </small> 
           </p>
           <img class="card-img-top" ng-src="{{$ctrl.fullRecipe.img}}" alt="{{$ctrl.fullRecipe.label}}">
 
@@ -58,8 +60,9 @@ function RecipeDetails(RecipeService, $q) {
          <p>
          <div ng-repeat="ingredient in $ctrl.fullRecipe.ingredientLine">{{ingredient}}</div>
          </p>
-         <p class="btn btn-primary"><a href="{{$ctrl.fullRecipe.url}}">Directions</a></p>
-         <button id="btn-favorite" class="btn btn-primary" ng-click="$ctrl.callFavorites(recipe)">Add to favorites</button>
+         <p class="btn btn-primary"><a href="{{$ctrl.fullRecipe.url}}">Recipe Directions</a></p>
+         <button class="btn btn-primary"><a href="https://www.mygrocerydeals.com/">Local Deals</a></button>
+
          </div>
      </div>
 

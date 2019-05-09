@@ -65,7 +65,7 @@ angular.module('RecipeApp')
     <div class="card-deck text-center" id="container">
     <div ng-class="row">
     <img class="card-img-top" ng-src="{{recipe.img}}" alt="{{recipe.label}}">
-    <div class="card-body">
+    <div class="card-body text-center">
     <h5 class="card-title">{{recipe.label}}</h5>
     <p class="card-text"><small class="text-muted">{{recipe.ingredients}} Ingredients | Calories: 
     <span class="cardParams">{{recipe.calories | number:0}}</span>
